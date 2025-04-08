@@ -10,6 +10,8 @@ import { showErrorMsg } from '../services/event-bus.service.js'
 
 export function AppHeader() {
     const navigate = useNavigate()
+
+    // TODO put the user in the store
     const [user, setUser] = useState(userService.getLoggedinUser())
     
     function onLogout() {
