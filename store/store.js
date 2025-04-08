@@ -22,6 +22,7 @@ const initialState = {
 }
 
 function appReducer(state = initialState, cmd = {}) {
+    
   switch (cmd.type) {
     case SET_TODOS:
       return { ...state, todos: cmd.todos }
@@ -46,7 +47,7 @@ function appReducer(state = initialState, cmd = {}) {
       case SET_IS_LOADING:
         return {
             ...state,
-            isLoading: !!state.todos.length
+            isLoading: !!cmd.todos.length
         }
 
     case SET_USER:

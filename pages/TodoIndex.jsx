@@ -14,7 +14,7 @@ export function TodoIndex() {
 
   const todos = useSelector((storeState) => storeState.todos)
   const isLoading = useSelector((storeState) => storeState.isLoading)
-
+  
   // Special hook for accessing search-params:
   const [searchParams, setSearchParams] = useSearchParams()
 
