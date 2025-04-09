@@ -2,12 +2,12 @@ import { storageService } from "./async-storage.service.js"
 
 
 export const userService = {
-    getLoggedinUser,
     login,
     logout,
     signup,
     getById,
     query,
+    getLoggedinUser,
     getEmptyCredentials
 }
 const STORAGE_KEY_LOGGEDIN = 'user'

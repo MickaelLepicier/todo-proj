@@ -12,7 +12,7 @@ const { Link, useSearchParams } = ReactRouterDOM
 export function TodoIndex() {
   // const [todos, setTodos] = useState(null)
 
-  const todos = useSelector((storeState) => storeState.todos)
+  const todos = useSelector((storeState) => storeState.todos) // KOSTA: this is how to subscribe to a data piece in the store
   const isLoading = useSelector((storeState) => storeState.isLoading)
   
   // Special hook for accessing search-params:
@@ -23,13 +23,15 @@ export function TodoIndex() {
   const [filterBy, setFilterBy] = useState(defaultFilter)
 
   useEffect(() => {
-    loadTodos(filterBy).catch((err) => {
+    loadTodos(filterBy).catch((err) => { // KOSTA: loadTodos is the action
       showErrorMsg('Cannot load todos')
     })
   }, [filterBy])
 
   function onRemoveTodo(todoId) {
-    removeTodo(todoId).catch(() => {
+    removeTodo(todoId).then(()=>{
+      showSuccessMsg('Todo has removed ')
+    }).catch(() => {
       showErrorMsg('Cannot remove todo ' + todoId)
     })
   }
