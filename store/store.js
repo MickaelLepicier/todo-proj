@@ -13,6 +13,8 @@ export const SET_IS_LOADING = 'SET_IS_LOADING'
 
 // * User
 export const SET_USER = 'SET_USER'
+export const UPDATE_USER = 'UPDATE_USER'
+
 
 const initialState = {
   todos: [],
@@ -22,7 +24,6 @@ const initialState = {
 }
 
 function appReducer(state = initialState, cmd = {}) {
-    
   switch (cmd.type) {
     case SET_TODOS:
       return { ...state, todos: cmd.todos }
@@ -44,16 +45,25 @@ function appReducer(state = initialState, cmd = {}) {
         )
       }
 
-      case SET_IS_LOADING:
-        return {
-            ...state,
-            isLoading: !!cmd.todos.length
-        }
+    case SET_IS_LOADING:
+      return {
+        ...state,
+        isLoading: !!cmd.todos.length
+      }
 
     case SET_USER:
       return {
         ...state,
         loggedInUser: cmd.user
+      }
+
+    case UPDATE_USER:
+      return {
+        ...state,
+        loggedInUser: {
+          ...state.loggedInUser,
+          balance: state.loggedInUser.balance + 10
+        }
       }
 
     default:

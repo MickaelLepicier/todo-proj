@@ -1,5 +1,5 @@
 import { userService } from '../../services/user.service.js'
-import { SET_USER, store } from '../store.js'
+import { SET_USER, store, UPDATE_USER } from '../store.js'
 
 export function login(credentials) {
   // console.log('credentials: ',credentials)
@@ -34,6 +34,21 @@ export function logout() {
     })
     .catch((err) => {
       console.log('user actions -> Cannot logout: ', err)
+      throw err
+    })
+}
+
+
+
+export function updateUser(user) {
+  // TODO keep working on updating the user
+  return userService
+    .update(user)
+    .then((savedUser) => {
+      store.dispatch({ type: UPDATE_USER, user: savedUser })
+    })
+    .catch((err) => {
+      console.log('todo action -> Cannot save todo: ', err)
       throw err
     })
 }
